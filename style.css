@@ -1,0 +1,99 @@
+*,
+::after,
+::before {
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(#fa21 20%, yellow 100%);
+}
+.wrapper {
+  border-radius: 12px;
+  width: 450px;
+  height: 450px;
+  max-width: 60%;
+  background-color: #eee;
+}
+.cards {
+  padding: 10px;
+  list-style: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% / 4 - 10px);
+  height: calc(100% / 4 - 10px);
+  position: relative;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  perspective: 800px;
+  transform-origin: preserve-3d;
+}
+.card.flip .back {
+  transform: rotateY(0deg);
+}
+.card.flip .front {
+  transform: rotateY(180deg);
+}
+.card.shaked {
+  animation: shaked 0.3s linear;
+}
+@keyframes shaked {
+  0% {
+    transform: translateX(0px);
+  }
+  10% {
+    transform: translateX(-13px);
+  }
+  20% {
+    transform: translateX(13px);
+  }
+  50% {
+    transform: translateX(-8px);
+  }
+  80% {
+    transform: translateX(8px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+.view {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s linear;
+  backface-visibility: hidden;
+  user-select: none;
+  pointer-events: none;
+}
+.card .back img {
+  width: 70px;
+}
+.back {
+  transform: rotateY(-180deg);
+}
+.card .front i {
+  font-size: 45px;
+  color: blueviolet;
+}
